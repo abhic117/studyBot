@@ -1,5 +1,18 @@
 require('dotenv').config();
 const { OpenAI } = require('openai');
+const express = require('express');
+
+const app = express();
+
+app.get('/', async (req, res) => {
+  res.send(await main());
+
+});
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on http://localhost:${process.env.PORT}`);
+});
+
 
 const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
@@ -15,10 +28,10 @@ async function main() {
       ],
     });
 
-    console.log(response.choices[0].message.content);
+    return response.choices[0].message.content;
   } catch (error) {
     console.error('Error:', error);
   }
 }
 
-main();
+//main();
