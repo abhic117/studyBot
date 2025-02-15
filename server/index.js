@@ -1,12 +1,19 @@
 require('dotenv').config();
 const { OpenAI } = require('openai');
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.post('/', (req, res) => {
+  const testData = req.body;
+  //console.log(testData);
+})
 
 app.get('/', async (req, res) => {
-  res.send(await main());
-
+  res.send('hello world');
 });
 
 app.listen(process.env.PORT, () => {
