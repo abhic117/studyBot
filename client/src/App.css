@@ -1,0 +1,41 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.input-container {
+  display: flex;
+  background-color: #333333;
+  height: 50px;
+}
+.input-container input:focus, .input-container input:active {
+  outline: none;
+}
+.input-container input {
+  border: none;
+  background-color: #333333;
+  margin-left: 1rem;
+}
+
+.input-container, .input-field {
+  border-radius: 2rem;
+}
+
+.input-button {
+  border-radius: 100%;
+  background-color: white;
+  color: black;
+  padding: 0%;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  transition: 0.3s;
+}
+
+.input-button:hover {
+  background-color: #6d9ac7;
+  color: white;
+  border-color: #1269cc;
+}

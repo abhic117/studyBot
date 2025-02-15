@@ -4,7 +4,8 @@
   "description": "AI bot that reviews code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "openai": "^4.83.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
