@@ -13,12 +13,12 @@ function App() {
 
   return (
     <>
-      <div>
-        <form onSubmit={submitHandler} className="input-container">
-          <input onChange={(e) => setMessage(e.target.value)} className="input-field" placeholder='Message'/>
-          <button className="input-button">Go</button>
-        </form>
-      </div>
+    <div className='divvy'>
+      <form onSubmit={submitHandler} className="input-container">
+        <div className="input-field" onChange={(e) => setMessage(e.target.value)} contentEditable="true"></div>
+        <button className="input-button">Go</button>
+      </form>
+    </div>
     </>
   )
 }
