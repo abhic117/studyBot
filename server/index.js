@@ -8,9 +8,8 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/', async (req, res) => {
-  let userMessage = req.body.message;
-  res.send(JSON.stringify({message2: await main(userMessage)}));
-  // console.log(userMessage);
+  let userMessage = req.body.userMessage;
+  res.send(JSON.stringify({aiMessage: await main(userMessage)}));
 })
 
 app.get('/', (req, res) => {
