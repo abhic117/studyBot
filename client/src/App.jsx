@@ -5,11 +5,17 @@ import { SubmitMessage } from './components/SubmitMessage'
 function App() {
   const [message, setMessage] = useState('')
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    SubmitMessage(message);
+    e.target.reset();
+  }
+
   return (
     <>
       <div>
-        <form onSubmit={SubmitMessage(message)} class="input-container">
-          <input onChange={(e) => setMessage(e.target.value)} value={message} className="input-field" placeholder='Message'/>
+        <form onSubmit={submitHandler} className="input-container">
+          <input onChange={(e) => setMessage(e.target.value)} className="input-field" placeholder='Message'/>
           <button className="input-button">Go</button>
         </form>
       </div>

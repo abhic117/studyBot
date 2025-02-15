@@ -1,4 +1,4 @@
-function SubmitMessage(message) {
+export function SubmitMessage(message) {
     fetch('http://localhost:3000/', {
         method: 'POST',
         headers: {
@@ -9,5 +9,3 @@ function SubmitMessage(message) {
       .then(response => response.json())
       .then(json => console.log(json))
 }
-
-export default SubmitMessage
