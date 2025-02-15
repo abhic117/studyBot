@@ -20,7 +20,6 @@ function App() {
     })
     .then(response => response.json())
     .then(json => console.log(json))
-    //console.log(message)
   }
 
   return (
