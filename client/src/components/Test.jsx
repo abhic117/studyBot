@@ -1,5 +1,5 @@
-export function Test() {
+export function Test(prop) {
     return (
-        <p>Hello World!</p>
+        <p>{prop.text}</p>
     )
 }

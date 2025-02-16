@@ -3,6 +3,7 @@ import './App.css'
 import { Test } from './components/Test'
 
 function App() {
+  const [chatText, setChatText] = useState('')
 
   const postMessage = (e) => {
     e.preventDefault();
@@ -17,14 +18,21 @@ function App() {
       body: JSON.stringify({userMessage: text})
     })
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => setChatText(json.aiMessage))
+
     console.log(text);
   }
+
+  // const dunc = (e) => {
+  //   e.preventDefault();
+
+  //   setChatText(document.getElementById("division").innerText);
+  // }
 
   return (
     <>
     <div className='chat-container'>
-      <Test></Test>
+      <Test id='hoi' text={chatText}></Test>
     </div>
     <form className='input-container'>
       <div id='division' className='input-field' contentEditable='true'></div>
