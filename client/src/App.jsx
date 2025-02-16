@@ -3,22 +3,22 @@ import './App.css'
 import { Test } from './components/Test'
 
 function App() {
-  const [message, setMessage] = useState('')
 
-  const submitHandler = (e) => {
+  const postMessage = (e) => {
     e.preventDefault();
+
+    let text = document.getElementById("division").innerText;
 
     fetch('http://localhost:3000/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({userMessage: message})
+      body: JSON.stringify({userMessage: text})
     })
     .then(response => response.json())
     .then(json => console.log(json))
-
-    e.target.reset();
+    console.log(text);
   }
 
   return (
@@ -26,9 +26,9 @@ function App() {
     <div className='chat-container'>
       <Test></Test>
     </div>
-    <form onSubmit={submitHandler} className='input-container'>
-      <div className='input-field' onChange={(e) => setMessage(e.target.value)} contentEditable='true'></div>
-      <button className='input-button' type='submit'>Go</button>
+    <form className='input-container'>
+      <div id='division' className='input-field' contentEditable='true'></div>
+      <button onClick={postMessage} className='input-button'>Go</button>
     </form>
     </>
   )
