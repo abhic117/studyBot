@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import './App.css'
-import { Test } from './components/Test'
+import { UserChatMessage } from './components/UserChatMessage'
 
 function App() {
-  const [chatText, setChatText] = useState('')
+  const isEmpty = str => !str.trim().length;
+
+  const [userChatList, setUserChatList] = useState([]);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const postMessage = (e) => {
     e.preventDefault();
@@ -18,25 +21,42 @@ function App() {
       body: JSON.stringify({userMessage: text})
     })
     .then(response => response.json())
-    .then(json => setChatText(json.aiMessage))
+    .then(json => console.log(json.aiMessage))
 
     console.log(text);
   }
 
-  // const dunc = (e) => {
-  //   e.preventDefault();
+  const handleBtn = (e) => {
+    e.preventDefault();
 
-  //   setChatText(document.getElementById("division").innerText);
-  // }
+    let msg = document.getElementById('input-field').innerText;
+
+    if (isEmpty(msg)) {
+      setBtnDisabled(true);
+    }
+    else {
+      setBtnDisabled(false)
+    }
+  }
+
+  const messageTester = (e) => {
+    e.preventDefault();
+
+    let msg = document.getElementById('input-field').innerText;
+
+    if (!isEmpty(msg)) {
+      setUserChatList(userChatList.concat(<UserChatMessage key={userChatList.length} text={msg}/>))
+    }
+  }
 
   return (
     <>
     <div className='chat-container'>
-      <Test id='hoi' text={chatText}></Test>
+      {userChatList}
     </div>
     <form className='input-container'>
-      <div id='division' className='input-field' contentEditable='true'></div>
-      <button onClick={postMessage} className='input-button'>Go</button>
+      <div onKeyUp={handleBtn}  id='input-field' className='input-field' contentEditable='true'></div>
+      <button disabled={btnDisabled} id='input-button' onClick={messageTester} className='input-button'>Go</button>
     </form>
     </>
   )

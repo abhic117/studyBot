@@ -16,6 +16,7 @@ body {
   width: 800px;
   height: 500px;
   margin: 20px 0;
+  padding: 10px;
 }
 
 /* INPUT FIELD */
@@ -42,6 +43,7 @@ body {
 .input-button {
   border-radius: 1rem;
   background-color: white;
+  border: none;
   color: black;
   padding: 0%;
   height: 40px;
@@ -53,5 +55,14 @@ body {
 .input-button:hover {
   background-color: #6d9ac7;
   color: white;
-  border-color: #1269cc;
+}
+
+.input-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input-button[disabled]:hover {
+  background-color: pink;
+  color: black;
 }
