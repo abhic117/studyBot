@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.post('/', async (req, res) => {
   let userMessage = req.body.userMessage;
-  res.send(JSON.stringify({aiMessage: await main(userMessage)}));
+  res.send(JSON.stringify({aiMessage: await studybotSummary(userMessage)}));
 })
 
 app.get('/', (req, res) => {
@@ -25,12 +25,16 @@ const openai = new OpenAI({
   apiKey: process.env.OPEN_AI_KEY,
 });
 
-async function main(message) {
+async function studybotSummary(message) {
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a helpful assistant.' },
+        { role: 'system', content: `You are a scholar in every field of research. Use the following step-by-step instructions when responding to user input.
+          
+          Step 1 - The user will provide you with text relating to some academic field. Summarize the text in one paragraph with a prefix that says summary. The summary should be easy to understand without modifying the meaning of the initial text and/or leaving out key points.
+          
+          Step 2 - Based on the user input, generate 5-10 dot points that outline the key aspects of the input with a prefix that says dot point summary.` },
         { role: 'user', content: message },
       ],
     });
