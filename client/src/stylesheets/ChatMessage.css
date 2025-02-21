@@ -1,7 +1,7 @@
 .message-bubble {
     border-radius: 1rem;
     width: fit-content;
-    max-width: 400px;
+    max-width: 600px;
     overflow-wrap: anywhere;
     padding: 10px;
     margin: 0%;
@@ -14,6 +14,10 @@
     justify-content: end;
 }
 
+#user-message {
+    background-color: #4d5d3b;
+}
+
 #ai-container {
     display: grid;
     grid-auto-flow: column;
@@ -21,12 +25,19 @@
     animation: fade-in 0.5s ease-in forwards;
 }
 
-#user-message {
-    background-color: #4d5d3b;
-}
-
 #ai-message {
     background-color: black;
+}
+
+#error-container {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    animation: fade-in 0.5s ease-in forwards;
+}
+
+#error-message {
+    background-color: #ff4d4d;
 }
 
 @keyframes fade-in {

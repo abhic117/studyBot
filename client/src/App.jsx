@@ -2,6 +2,8 @@ import { useState, useEffect, useTransition } from 'react'
 import './App.css'
 import { ChatMessage } from './components/ChatMessage'
 import { uid } from 'uid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
@@ -20,7 +22,7 @@ function App() {
     
     document.getElementById("input-field").textContent = '';
 
-    fetch('http://localhost:3001/', {
+      fetch('http://localhost:3000/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -32,6 +34,13 @@ function App() {
       arr.push(<ChatMessage containerId={'ai-container'} bubbleId={'ai-message'} key={uid()} text={json.aiMessage}/>);
 
       setChatList(chatList.concat(arr));
+    })
+    .catch((error) => {
+      console.log(error);
+
+      arr.push(<ChatMessage containerId={'error-container'} bubbleId={'error-message'} key={uid()} text={'Error sending message, please try again...'}/>);
+      setChatList(chatList.concat(arr));
+
     })
   }
 
@@ -59,7 +68,7 @@ function App() {
     </div>
     <form className='input-container'>
       <div onKeyUp={handleBtn}  id='input-field' className='input-field' contentEditable='true'></div>
-      <button disabled={btnDisabled} id='input-button' onClick={handleMessage} className='input-button'>Go</button>
+      <button disabled={btnDisabled} id='input-button' onClick={handleMessage} className='input-button'><FontAwesomeIcon icon={faPaperPlane} size="xl" /></button>
     </form>
     </>
   )
