@@ -1,2 +1,2 @@
 # Study Bot
-## Your AI study assisstant!
+## Your AI study assistant!
